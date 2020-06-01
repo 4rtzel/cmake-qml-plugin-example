@@ -35,13 +35,15 @@ target_compile_features(
         cxx_generic_lambdas
 )
 
-target_compile_options(
-    myplugin
-    PRIVATE
-        -Wall
-        -Wextra
-        -Wpedantic
-)
+if ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "GNU")
+    target_compile_options(
+        ${PROJECT_NAME}
+        PRIVATE
+            -Wall
+            -Wextra
+            -Wpedantic
+    )
+endif()
 
 target_link_libraries(
     myplugin
